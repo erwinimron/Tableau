@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html>
-<title>Tableau</title>
-<body>  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Tableau Dashboard</title>
+    <script type="module" src="https://eu-west-1a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+    <script type="text/javascript">
+        import { TableauViz } from 'https://eu-west-1a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js';
 
-<h1>Turnover Analysis</h1>  
-
-<script type='module' src='https://eu-west-1a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script><tableau-viz id='tableau-viz' src='https://eu-west-1a.online.tableau.com/t/bagtableau/views/QC-Dashboard/OQLEndline' token="YRDSXOAYSBmjSf2UtvhOxw==:EfUKTI7b30Nuvpe3TQw2CgJst8JwBXxw" width='1016' height='1304' hide-tabs toolbar='bottom' ></tableau-viz>
-
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableauViz = document.getElementById('tableau-viz');
+            const options = {
+                token: 'QC Dashboard',
+                secret: 'yRDSXOAYSBmjSf2UtvhOxw==:EfUKTI7b3ONuvpe3TQw2CgJst8JwBXxw'
+            };
+            const viz = new TableauViz(tableauViz, options);
+            viz.render();
+        });
+    </script>
+</head>
+<body>
+    <h1>My Tableau Dashboard</h1>
+    <div id="tableau-viz" style="width: 1016px; height: 1304px;" src='https://eu-west-1a.online.tableau.com/t/bagtableau/views/QC-Dashboard/OQLEndline' hide-tabs toolbar='bottom'></div>
 </body>
 </html>
